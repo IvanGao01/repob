@@ -1,0 +1,18 @@
+name: Deploy Workflow
+
+on:
+  repository_dispatch:
+    types:
+      - deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository B
+        uses: actions/checkout@v2  # 获取仓库B的代码
+
+      - name: Deploy to Production
+        run: |
+          echo "Run repo B"
