@@ -1,25 +1,18 @@
-name: Deploy Workflow
+name: Deploy
 
 on:
-  repository_dispatch:
-    types:
-      - deploy
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    
-    env:
-      WEBHOOK_SECRET: 123456
-      
+
     steps:
-      - name: Checkout Repository B
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to Production
+      - name: Run a command
         run: |
-          if [ "$WEBHOOK_SECRET" != "123456" ]; then
-            echo "Webhook secret does not match. Exiting..."
-            exit
-          fi
-          echo "Run repo B"
+          echo "Hello, world!"
